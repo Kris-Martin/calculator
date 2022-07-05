@@ -1,5 +1,9 @@
 # Calculator
 
+## Image of calculator to reproduce - [source](https://auspowers.com/products/catiga-cd-8185-office-and-home-style-calculator-8-digit-lcd-display-suitable-for-desk-and-on-the-move-use-blue-blue?variant=41366022422708)
+
+![Picture of calculator](calculator-resized.jpeg)
+
 ## Steps for calculator project
 
 -   Display numbers on screen
