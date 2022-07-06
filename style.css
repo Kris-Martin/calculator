@@ -1,1 +1,124 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+}
 
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  width: 83.3333333333vw;
+  max-width: 450px;
+  height: 85%;
+  padding: 1em;
+  border: 1px solid blue;
+  border-radius: 1em;
+  background-color: lightblue;
+}
+
+.display {
+  height: 6em;
+  border: 1px solid blue;
+  border-radius: 0.5em;
+  background-color: lightgrey;
+}
+
+.info {
+  height: 4.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: darkblue;
+}
+.info__badge > p {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.info__badge > p > span {
+  font-weight: bold;
+}
+.info__badge > p > span > sup {
+  font-size: 0.5rem;
+}
+.info__digits {
+  margin-left: auto;
+  padding-right: 0.5em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: bold;
+}
+.info__digits > span {
+  font-style: italic;
+}
+.info__solar {
+  width: 25%;
+  height: 50%;
+  border-radius: 0.2em;
+  background-color: black;
+}
+.info small {
+  font-size: 0.7rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid blue;
+  border-radius: 0.2em;
+  background-color: lightblue;
+  color: white;
+  font-size: 3rem;
+}
+.button--sm-text {
+  font-size: 1.4rem;
+}
+.button--md-text {
+  font-size: 2.5rem;
+}
+.button--white {
+  background-color: white;
+  color: lightblue;
+  border-color: lightgrey;
+}
+.button--red {
+  background-color: red;
+  border-color: darkred;
+}
+.button--red p:first-child {
+  text-decoration: underline;
+}
+.button--circle {
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+}
+.button__equals {
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 1em;
+  grid-column: 2/span 3;
+}
+.button__addition {
+  height: 90%;
+  grid-column: 5;
+  grid-row: 4/span 2;
+  border-radius: 1em;
+}

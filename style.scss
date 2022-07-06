@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    // Sizing
+    width: calc(100vw / 1.2);
+    max-width: 450px;
+    height: 85%;
+    padding: 1em;
+    // Styling
+    border: 1px solid blue;
+    border-radius: 1em;
+    background-color: lightblue;
+}
+
+.display {
+    height: 6em;
+    border: 1px solid blue;
+    border-radius: 0.5em;
+    background-color: lightgrey;
+}
+
+.info {
+    height: 4.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: darkblue;
+
+    &__badge {
+        & > p {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            & > span {
+                font-weight: bold;
+                > sup {
+                    font-size: 0.5rem;
+                }
+            }
+        }
+    }
+
+    &__digits {
+        margin-left: auto;
+        padding-right: 0.5em;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-weight: bold;
+
+        & > span {
+            font-style: italic;
+        }
+    }
+
+    &__solar {
+        width: 25%;
+        height: 50%;
+        border-radius: 0.2em;
+        background-color: black;
+    }
+
+    & small {
+        font-size: 0.7rem;
+    }
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 1em;
+}
+
+.button {
+    // Sizing
+    width: 100%;
+    height: 100%;
+
+    // Arrange content
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    // Styling
+    border: 1px solid blue;
+    border-radius: 0.2em;
+    background-color: lightblue;
+    color: white;
+    font-size: 3rem;
+
+    &--sm-text {
+        font-size: 1.4rem;
+    }
+
+    &--md-text {
+        font-size: 2.5rem;
+    }
+
+    &--white {
+        background-color: white;
+        color: lightblue;
+        border-color: lightgrey;
+    }
+
+    &--red {
+        background-color: red;
+        border-color: darkred;
+
+        & p:first-child {
+            text-decoration: underline;
+        }
+    }
+
+    &--circle {
+        aspect-ratio: 1/1;
+        border-radius: 100%;
+    }
+
+    &__equals {
+        margin: 0 auto;
+        width: 90%;
+        border-radius: 1em;
+        grid-column: 2 / span 3;
+    }
+
+    &__addition {
+        height: 90%;
+        grid-column: 5;
+        grid-row: 4 / span 2;
+        border-radius: 1em;
+    }
+}
