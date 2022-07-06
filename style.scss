@@ -111,9 +111,10 @@ main {
         color: rgb(41 193 255);
     }
 
-    &:active {
-        box-shadow: 0 0 0 2px lightgray;
-    }
+    // Causes bug on Safari
+    // &:active {
+    //     box-shadow: 0 0 0 2px lightgray;
+    // }
 
     &--sm-text {
         font-size: 1.4rem;

@@ -95,9 +95,6 @@ main {
   background-color: white;
   color: rgb(41, 193, 255);
 }
-.button:active {
-  box-shadow: 0 0 0 2px lightgray;
-}
 .button--sm-text {
   font-size: 1.4rem;
 }
