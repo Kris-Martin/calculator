@@ -90,6 +90,13 @@ main {
   box-shadow: -1px 3px 3px black;
   font-size: 3rem;
 }
+.button:hover {
+  cursor: pointer;
+}
+.button:active {
+  background-color: white;
+  color: rgb(41, 193, 255);
+}
 .button--sm-text {
   font-size: 1.4rem;
 }
@@ -101,12 +108,19 @@ main {
   color: rgb(41, 193, 255);
   border-color: lightgrey;
 }
+.button--white:active {
+  background-color: rgb(41, 193, 255);
+  color: white;
+}
 .button--red {
   background-color: red;
   border-color: lightgrey;
 }
 .button--red p:first-child {
   text-decoration: underline;
+}
+.button--red:active {
+  color: red;
 }
 .button--circle {
   aspect-ratio: 1/1;

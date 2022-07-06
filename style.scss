@@ -105,6 +105,15 @@ main {
     box-shadow: -1px 3px 3px black;
     font-size: 3rem;
 
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: white;
+        color: rgb(41 193 255);
+    }
+
     &--sm-text {
         font-size: 1.4rem;
     }
@@ -117,6 +126,11 @@ main {
         background-color: white;
         color: rgb(41 193 255);
         border-color: lightgrey;
+
+        &:active {
+            background-color: rgb(41 193 255);
+            color: white;
+        }
     }
 
     &--red {
@@ -125,6 +139,10 @@ main {
 
         & p:first-child {
             text-decoration: underline;
+        }
+
+        &:active {
+            color: red;
         }
     }
 
