@@ -107,11 +107,12 @@ main {
 
     &:hover {
         cursor: pointer;
+        background-color: white;
+        color: rgb(41 193 255);
     }
 
     &:active {
-        background-color: white;
-        color: rgb(41 193 255);
+        box-shadow: 0 0 0 2px lightgray;
     }
 
     &--sm-text {
@@ -127,7 +128,7 @@ main {
         color: rgb(41 193 255);
         border-color: lightgrey;
 
-        &:active {
+        &:hover {
             background-color: rgb(41 193 255);
             color: white;
         }
@@ -141,7 +142,7 @@ main {
             text-decoration: underline;
         }
 
-        &:active {
+        &:hover {
             color: red;
         }
     }
