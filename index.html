@@ -11,7 +11,7 @@
     <body>
         <main>
             <div class="calculator">
-                <div class="display"></div>
+                <div class="display"><p></p></div>
                 <div class="info">
                     <div class="info__badge">
                         <p>
@@ -29,10 +29,13 @@
                     <button id="%" class="button button--white button--circle">
                         %
                     </button>
-                    <button id="7" class="button">7</button>
-                    <button id="8" class="button">8</button>
-                    <button id="9" class="button">9</button>
-                    <button id="/" class="button button--white button--circle">
+                    <button id="7" class="button number">7</button>
+                    <button id="8" class="button number">8</button>
+                    <button id="9" class="button number">9</button>
+                    <button
+                        id="/"
+                        class="button button--white button--circle operator"
+                    >
                         ÷
                     </button>
                     <button
@@ -41,22 +44,28 @@
                     >
                         √
                     </button>
-                    <button id="4" class="button">4</button>
-                    <button id="5" class="button">5</button>
-                    <button id="6" class="button">6</button>
-                    <button id="*" class="button button--white button--circle">
+                    <button id="4" class="button number">4</button>
+                    <button id="5" class="button number">5</button>
+                    <button id="6" class="button number">6</button>
+                    <button
+                        id="*"
+                        class="button button--white button--circle operator"
+                    >
                         X
                     </button>
                     <button
-                        id="ce"
+                        id="on|ce"
                         class="button button--white button--circle button--md-text"
                     >
                         CE
                     </button>
-                    <button id="1" class="button">1</button>
-                    <button id="2" class="button">2</button>
-                    <button id="3" class="button">3</button>
-                    <button id="-" class="button button--white button--circle">
+                    <button id="1" class="button number">1</button>
+                    <button id="2" class="button number">2</button>
+                    <button id="3" class="button number">3</button>
+                    <button
+                        id="-"
+                        class="button button--white button--circle operator"
+                    >
                         —
                     </button>
                     <button
@@ -66,12 +75,14 @@
                         <p>ON</p>
                         <p>C</p>
                     </button>
-                    <button id="0" class="button">0</button>
-                    <button id="." class="button button__period">•</button>
+                    <button id="0" class="button number">0</button>
+                    <button id="." class="button button__period number">
+                        •
+                    </button>
                     <button id="+/-" class="button button--md-text">+/-</button>
                     <button
                         id="+"
-                        class="button button--white button__addition"
+                        class="button button--white button__addition operator"
                     >
                         +
                     </button>
