@@ -64,7 +64,7 @@ operatorBtns.forEach((btn) => {
 
             // Set num1 to result
             num1 = result;
-            // Rest num2
+            // Reset num2
             num2 = undefined;
         }
 
