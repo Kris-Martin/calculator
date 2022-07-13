@@ -117,9 +117,9 @@ numberBtns.forEach((btn) => {
 });
 
 function displayResult() {
-    const decimals = 8 - Math.floor(result).toString().length;
+    const decimals = 9 - Math.floor(result).toString().length;
     display.innerText =
-        result.toString().length > 8 ? result.toFixed(decimals) : result;
+        result.toString().length > 9 ? result.toFixed(decimals) : result;
     console.log(`${num1} ${operator1} ${num2} = ${result}`);
 }
 
