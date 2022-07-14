@@ -1,10 +1,4 @@
-// Store operations by string operator
-const calc = new Map([
-    ["+", (x, y) => x + y],
-    ["-", (x, y) => x - y],
-    ["*", (x, y) => x * y],
-    ["/", (x, y) => ([x, y].includes(0) ? "Error" : x / y)],
-]);
+import { calc } from "./calc.js";
 
 // Calculator display
 const display = document.querySelector(".display > p");
