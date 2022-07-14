@@ -1,32 +1,36 @@
 import { calc } from "./calc.js";
 
-// Calculator display
+const initialState = {
+    periodCount: 0,
+    num1: null,
+    num2: null,
+    operator1: null,
+    operator2: null,
+    result: null,
+};
+let { periodCount, num1, num2, operator1, operator2, result } = initialState;
+
+// DOM Elements
 const display = document.querySelector(".display > p");
+const onClearBtn = document.querySelector(".button--red");
+const operatorBtns = document.querySelectorAll(".operator");
+const numberBtns = document.querySelectorAll(".number");
+const equalsBtn = document.querySelector(".button__equals");
+
 // console.log(display);
 
-let num1, num2, operator1, operator2, result;
-
 // On/clear button
-document.querySelector(".button--red").addEventListener("click", () => {
+onClearBtn.addEventListener("click", () => {
     // console.log("test");
-    num1 = undefined;
-    num2 = undefined;
-    periodCount = 0;
-    operator1 = undefined;
-    operator2 = undefined;
-    result = undefined;
+    ({ periodCount, num1, num2, operator1, operator2, result } = initialState);
     display.innerText = "";
 });
 
 // Operator buttons
-const operatorBtns = document.querySelectorAll(".operator");
-
 operatorBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
         // Get numbers
-        num1 === undefined
-            ? (num1 = display.innerText)
-            : (num2 = display.innerText);
+        num1 === null ? (num1 = display.innerText) : (num2 = display.innerText);
         // console.log("Num 1: ", num1);
         // console.log("Num 2: ", num2);
 
@@ -34,12 +38,12 @@ operatorBtns.forEach((btn) => {
         periodCount = 0;
 
         // Store operator
-        operator1 === undefined ? (operator1 = btn.id) : (operator2 = btn.id);
+        operator1 === null ? (operator1 = btn.id) : (operator2 = btn.id);
         // console.log("Operator 1: ", operator1);
         // console.log("Operator 2: ", operator2);
 
         // Calculate result
-        if (num1 !== undefined && num2 !== undefined) {
+        if (num1 !== null && num2 !== null) {
             // Calculate result
             result = calc.get(operator1)(Number(num1), Number(num2));
 
@@ -52,24 +56,24 @@ operatorBtns.forEach((btn) => {
             // Set num1 to result
             num1 = result;
             // Reset num2
-            num2 = undefined;
+            num2 = null;
         }
 
         // Clear display
-        display.innerText = result === undefined ? "" : result;
+        display.innerText = result === null ? "" : result;
     });
 });
 
 // Equals button
-document.querySelector(".button__equals").addEventListener("click", () => {
-    // Store num2 if undefined
-    if (num2 === undefined) num2 = display.innerText;
+equalsBtn.addEventListener("click", () => {
+    // Store num2 if null
+    if (num2 === null) num2 = display.innerText;
 
     // Reset period count
     periodCount = 0;
 
     // Calculate result
-    if (num1 !== undefined && num2 !== undefined) {
+    if (num1 !== null && num2 !== null) {
         // Calculate result
         result = calc.get(operator1)(Number(num1), Number(num2));
 
@@ -82,18 +86,14 @@ document.querySelector(".button__equals").addEventListener("click", () => {
 });
 
 // Number buttons
-const numberBtns = document.querySelectorAll(".number");
-let periodCount = 0;
-
-// Print numbers to screen
 numberBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
         // Check period count
         if (btn.id === ".") periodCount++;
 
-        if (result !== undefined && !(periodCount > 1 && btn.id === ".")) {
+        if (result !== null && !(periodCount > 1 && btn.id === ".")) {
             display.innerText = "" + btn.id;
-            result = undefined;
+            result = null;
         } else if (
             display.innerText.length < 9 &&
             !(periodCount > 1 && btn.id === ".")
@@ -109,16 +109,3 @@ function displayResult() {
         result.toString().length > 9 ? result.toFixed(decimals) : result;
     console.log(`${num1} ${operator1} ${num2} = ${result}`);
 }
-
-// Test code
-// for (key of calc.keys()) {
-//     console.log(key);
-// }
-
-// console.log(calc.keys());
-// let operator = "+";
-// console.log(calc.get(operator)(5, 7));
-// console.log(calc.get("/")(5, 0));
-// console.log([10, 2].reduce(calc.get("-")));
-
-// console.log(operatorBtns);
