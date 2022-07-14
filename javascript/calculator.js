@@ -1,16 +1,9 @@
-// Operations
-const sum = (x, y) => x + y;
-const subtract = (x, y) => x - y;
-const multiply = (x, y) => x * y;
-const divide = (x, y) => ([x, y].includes(0) ? "Error" : x / y);
-const onOrClear = (display) => (display.innerText = 0);
-
 // Store operations by string operator
 const calc = new Map([
-    ["+", sum],
-    ["-", subtract],
-    ["*", multiply],
-    ["/", divide],
+    ["+", (x, y) => x + y],
+    ["-", (x, y) => x - y],
+    ["*", (x, y) => x * y],
+    ["/", (x, y) => ([x, y].includes(0) ? "Error" : x / y)],
 ]);
 
 // Calculator display
