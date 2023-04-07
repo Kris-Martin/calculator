@@ -22,11 +22,17 @@ export const reset = () => {
 // update the display with the current number.
 export const numberBtnsHandler = (btn) => {
   if (memory.operator === '' && btn.id !== '.') {
-    memory.num1 += btn.id;
-    display.textContent = memory.num1;
+    if (memory.num1.length < 9) {
+      console.log(`Num1 length: ${memory.num1.length}`);
+      memory.num1 += btn.id;
+      display.textContent = memory.num1;
+    }
   } else if (btn.id !== '.') {
-    memory.num2 += btn.id;
-    display.textContent = memory.num2;
+    if (memory.num2.length < 9) {
+      console.log(`Num2 length: ${memory.num2.length}`);
+      memory.num2 += btn.id;
+      display.textContent = memory.num2;
+    }
   }
 };
 
@@ -75,4 +81,11 @@ const calculate = () => {
     Number(memory.num1),
     Number(memory.num2),
   );
+};
+
+// TODO: Fix the display of the result to max 8-9 digits
+const displayResult = () => {
+  display.textContent = Intl.NumberFormat('en-AU', {
+    maximumSignificantDigits: 9,
+  }).format(memory.result);
 };
