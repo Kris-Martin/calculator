@@ -1,24 +1,38 @@
-import { reset, numberBtnsHandler, periodBtnHandler } from './handlers.js';
+import {
+  reset,
+  numberBtnsHandler,
+  periodBtnHandler,
+  operatorBtnHandler,
+  equalsBtnHandler,
+} from './handlers.js';
 
 // DOM Elements
-export const display = document.querySelector('.display > p');
-const onClearBtn = document.querySelector('.button--red');
-const numberBtns = document.querySelectorAll('.number');
-export const periodBtn = document.querySelector('.button__period');
-const operatorBtns = document.querySelectorAll('.operator');
+export let display = '';
+export let periodBtn = '';
 
-// On/clear button
-onClearBtn.addEventListener('click', reset);
+window.onload = () => {
+  display = document.querySelector('.display > p');
+  const onClearBtn = document.querySelector('.button--red');
+  const numberBtns = document.querySelectorAll('.number');
+  periodBtn = document.querySelector('.button__period');
+  const operatorBtns = document.querySelectorAll('.operator');
+  const equalsBtn = document.querySelector('.button__equals');
 
-// Number buttons
-numberBtns.forEach((btn) => {
-  btn.addEventListener('click', () => numberBtnsHandler(btn));
-});
+  // On/clear button
+  onClearBtn.addEventListener('click', reset);
 
-// Period button
-periodBtn.addEventListener('click', () => periodBtnHandler(periodBtn));
+  // Number buttons
+  numberBtns.forEach((btn) => {
+    btn.addEventListener('click', () => numberBtnsHandler(btn));
+  });
 
-// // Operator buttons
-// operatorBtns.forEach((btn) => {
-//   btn.addEventListener('click', () => operatorBtnHandler(btn));
-// });
+  // Period button
+  periodBtn.addEventListener('click', () => periodBtnHandler(periodBtn));
+
+  // Operator buttons
+  operatorBtns.forEach((btn) => {
+    btn.addEventListener('click', () => operatorBtnHandler(btn));
+  });
+
+  equalsBtn.addEventListener('click', () => equalsBtnHandler(equalsBtn));
+};
