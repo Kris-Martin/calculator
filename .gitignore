@@ -1,6 +1,9 @@
+# Files to ignore
+TODO.md
+# Full size image
+calculator.jpeg
+# Node
+node_modules
+package-lock.json
 # MacOS
 .DS_Store
-## Files to ignore
-TODO.md
-## Full size image
-calculator.jpeg
