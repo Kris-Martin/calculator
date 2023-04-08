@@ -29,6 +29,7 @@ https://kris-martin.github.io/calculator/
 
 - % button
 - square root button
+- +/- assign positive/negative to number
 - CE button
 - pressing equal again repeats the last operation
 
