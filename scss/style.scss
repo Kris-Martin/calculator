@@ -1,191 +1,192 @@
 *,
 *::before,
 *::after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 7vh 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 7vh 0;
 }
 
 .calculator {
-    // Sizing
-    width: 450px;
-    height: 611px;
-    padding: 1.5em 2em 2.5em;
-    // Styling
-    border: 1px solid lightgray;
-    border-radius: 3em 3em 8em 8em;
-    background-color: rgb(41 193 255);
-    box-shadow: -1px 2px 3px black;
+  // Sizing
+  width: 450px;
+  height: 611px;
+  padding: 1.5em 2em 2.5em;
+  // Styling
+  border: 1px solid lightgray;
+  border-radius: 3em 3em 8em 8em;
+  background-color: rgb(41 193 255);
+  box-shadow: -1px 2px 3px black;
 }
 
 .display {
-    height: 6em;
-    border: 1px solid lightgrey;
-    border-radius: 0.5em;
-    background-color: lightgrey;
-    box-shadow: 2px 2px 5px 1px black inset;
+  height: 6em;
+  border: 1px solid lightgrey;
+  border-radius: 0.5em;
+  background-color: lightgrey;
+  box-shadow: 2px 2px 5px 1px black inset;
 
-    & > p {
-        width: 100%;
-        height: 100%;
-        text-align: right;
-        font-size: 4.5rem;
-        padding: 0.1em;
-    }
+  & > p {
+    width: 100%;
+    height: 100%;
+    text-align: right;
+    font-family: Roboto Mono, monospace;
+    font-size: 4.3rem;
+    padding: 0.1em;
+  }
 }
 
 .info {
-    height: 4.5em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: darkblue;
+  height: 4.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: darkblue;
 
-    &__badge {
-        & > p {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+  &__badge {
+    & > p {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
 
-            & > span {
-                font-weight: bold;
-                > sup {
-                    font-size: 0.5rem;
-                }
-            }
-        }
-    }
-
-    &__digits {
-        margin-left: auto;
-        padding-right: 0.5em;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+      & > span {
         font-weight: bold;
-
-        & > span {
-            font-style: italic;
+        > sup {
+          font-size: 0.5rem;
         }
+      }
     }
+  }
 
-    &__solar {
-        width: 25%;
-        height: 50%;
-        border-radius: 0.2em;
-        background-color: rgb(75, 64, 64);
-        box-shadow: 2px 2px 5px 1px black inset;
-    }
+  &__digits {
+    margin-left: auto;
+    padding-right: 0.5em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: bold;
 
-    & small {
-        font-size: 0.7rem;
+    & > span {
+      font-style: italic;
     }
+  }
+
+  &__solar {
+    width: 25%;
+    height: 50%;
+    border-radius: 0.2em;
+    background-color: rgb(75, 64, 64);
+    box-shadow: 2px 2px 5px 1px black inset;
+  }
+
+  & small {
+    font-size: 0.7rem;
+  }
 }
 
 .controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
 }
 
 .button {
-    // Sizing
-    width: 64px;
-    height: 64px;
+  // Sizing
+  width: 64px;
+  height: 64px;
 
-    // Arrange content
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  // Arrange content
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    // Styling
-    border: 1px solid lightgray;
-    border-radius: 0.2em;
-    background-color: rgb(41 193 255);
-    color: white;
-    box-shadow: -1px 3px 3px black;
-    font-size: 3rem;
+  // Styling
+  border: 1px solid lightgray;
+  border-radius: 0.2em;
+  background-color: rgb(41 193 255);
+  color: white;
+  box-shadow: -1px 3px 3px black;
+  font-size: 3rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: white;
+    color: rgb(41 193 255);
+  }
+
+  // Causes bug on Safari if button width and height set to percentage
+  &:active {
+    box-shadow: 0 0 0 2px lightgray;
+  }
+
+  &--sm-text {
+    font-size: 1.4rem;
+  }
+
+  &--md-text {
+    font-size: 2.5rem;
+  }
+
+  &--white {
+    background-color: white;
+    color: rgb(41 193 255);
+    border-color: lightgrey;
 
     &:hover {
-        cursor: pointer;
-        background-color: white;
-        color: rgb(41 193 255);
+      background-color: rgb(41 193 255);
+      color: white;
+    }
+  }
+
+  &--red {
+    background-color: red;
+    border-color: lightgrey;
+
+    & span:first-child {
+      text-decoration: underline;
     }
 
-    // Causes bug on Safari if button width and height set to percentage
-    &:active {
-        box-shadow: 0 0 0 2px lightgray;
+    &:hover {
+      color: red;
     }
+  }
 
-    &--sm-text {
-        font-size: 1.4rem;
-    }
+  &--circle {
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+  }
 
-    &--md-text {
-        font-size: 2.5rem;
-    }
+  &__equals {
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 1em;
+    grid-column: 2 / span 3;
+  }
 
-    &--white {
-        background-color: white;
-        color: rgb(41 193 255);
-        border-color: lightgrey;
-
-        &:hover {
-            background-color: rgb(41 193 255);
-            color: white;
-        }
-    }
-
-    &--red {
-        background-color: red;
-        border-color: lightgrey;
-
-        & span:first-child {
-            text-decoration: underline;
-        }
-
-        &:hover {
-            color: red;
-        }
-    }
-
-    &--circle {
-        aspect-ratio: 1/1;
-        border-radius: 100%;
-    }
-
-    &__equals {
-        margin: 0 auto;
-        width: 90%;
-        border-radius: 1em;
-        grid-column: 2 / span 3;
-    }
-
-    &__addition {
-        height: 90%;
-        grid-column: 5;
-        grid-row: 4 / span 2;
-        border-radius: 1em;
-    }
+  &__addition {
+    height: 90%;
+    grid-column: 5;
+    grid-row: 4 / span 2;
+    border-radius: 1em;
+  }
 }

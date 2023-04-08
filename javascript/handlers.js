@@ -1,94 +1,108 @@
-import { calc } from "./calc.js";
-import { display } from "./main.js";
+import { calc } from './calc.js';
+import { display, periodBtn } from './main.js';
 
-const initialState = {
-    periodCount: 0,
-    num1: null,
-    num2: null,
-    operator1: null,
-    operator2: null,
-    result: null,
+const memory = {
+  num1: '',
+  num2: '',
+  operator: '',
+  result: 0,
 };
-let { periodCount, num1, num2, operator1, operator2, result } = initialState;
 
-export function numberBtnsHandler(btn) {
-    // Check period count
-    if (btn.id === ".") periodCount++;
+// Reset the memory variables and display
+export const reset = () => {
+  memory.num1 = '';
+  memory.num2 = '';
+  memory.operator = '';
+  memory.result = 0;
+  periodBtn.disabled = false;
+  display.textContent = '0';
+};
 
-    if (result !== null && !(periodCount > 1 && btn.id === ".")) {
-        display.innerText = "" + btn.id;
-        result = null;
-    } else if (
-        display.innerText.length < 9 &&
-        !(periodCount > 1 && btn.id === ".")
-    ) {
-        display.innerText += btn.id;
+// Append the button id to the appropriate memory variable and
+// update the display with the current number.
+export const numberBtnsHandler = (btn) => {
+  if (memory.operator === '' && btn.id !== '.') {
+    if (memory.num1.length < 9) {
+      memory.num1 += btn.id;
+      display.textContent = memory.num1;
     }
-}
-
-export function equalsBtnHandler() {
-    // Store num2 if null
-    if (num2 === null) num2 = display.innerText;
-
-    // Reset period count
-    periodCount = 0;
-
-    // Calculate result
-    if (num1 !== null && num2 !== null) {
-        // Calculate result
-        result = calc.get(operator1)(Number(num1), Number(num2));
-
-        // Display result
-        displayResult();
-
-        // Set num1 to result
-        num1 = result;
+  } else if (btn.id !== '.') {
+    if (memory.num2.length < 9) {
+      memory.num2 += btn.id;
+      display.textContent = memory.num2;
     }
-}
+  }
+};
 
-export function operatorBtnHandler(btn) {
-    // Get numbers
-    num1 === null ? (num1 = display.innerText) : (num2 = display.innerText);
-    // console.log("Num 1: ", num1);
-    // console.log("Num 2: ", num2);
+// Disable the '.' button and append a period to (num1 or num2)
+export const periodBtnHandler = (btn) => {
+  btn.disabled = true;
+  if (memory.operator === '') {
+    if (memory.num1 === '') memory.num1 = '0';
+    memory.num1 += btn.id;
+    display.textContent = memory.num1;
+  } else {
+    if (memory.num2 === '') memory.num2 = '0';
+    memory.num2 += btn.id;
+    display.textContent = memory.num2;
+  }
+};
 
-    // Reset period count
-    periodCount = 0;
+/**
+ * Check if there are two numbers and an operator in memory if so,
+ * calculate and update the display with the result.
+ * Store the selected operator in memory and enable the period button * for the next number.
+ */
+export const operatorBtnHandler = (btn) => {
+  if (memory.num1 !== '' && memory.num2 && memory.operator !== '') {
+    calculate();
+    displayResult();
+    memory.num1 = memory.result;
+    memory.num2 = '';
+    periodBtn.disabled = false;
+  }
+  memory.operator = btn.id;
+  periodBtn.disabled = false;
+};
 
-    // Store operator
-    operator1 === null ? (operator1 = btn.id) : (operator2 = btn.id);
-    // console.log("Operator 1: ", operator1);
-    // console.log("Operator 2: ", operator2);
+export const equalsBtnHandler = () => {
+  if (memory.num1 !== '' && memory.operator !== '') {
+    if (memory.num2 === '') memory.num2 = memory.num1;
+    calculate();
+    displayResult();
+  }
+};
 
-    // Calculate result
-    if (num1 !== null && num2 !== null) {
-        // Calculate result
-        result = calc.get(operator1)(Number(num1), Number(num2));
+const calculate = () => {
+  memory.result = calc.get(memory.operator)(
+    Number(memory.num1),
+    Number(memory.num2),
+  );
+};
 
-        // Display result
-        displayResult();
+// Format the result to display to fit 9 digits max
+const displayResult = () => {
+  const maxDigits = 9;
 
-        // Set current operator to next operator if exists and not "="
-        operator1 = operator2;
+  let length;
+  if (memory.result.toString().includes('.')) {
+    length = {
+      integer: memory.result.toString().split('.')[0].length,
+      decimal: memory.result.toString().split('.')[1].length,
+    };
+  } else {
+    length = {
+      integer: memory.result.toString().length,
+      decimal: 0,
+    };
+  }
+  console.log(length);
 
-        // Set num1 to result
-        num1 = result;
-        // Reset num2
-        num2 = null;
-    }
-
-    // Clear display
-    display.innerText = result === null ? "" : result;
-}
-
-export function reset() {
-    ({ periodCount, num1, num2, operator1, operator2, result } = initialState);
-    display.innerText = "";
-}
-
-function displayResult() {
-    const decimals = 9 - Math.floor(result).toString().length;
-    display.innerText =
-        result.toString().length > 9 ? result.toFixed(decimals) : result;
-    console.log(`${num1} ${operator1} ${num2} = ${result}`);
-}
+  if (length.integer > maxDigits) {
+    memory.result = memory.result.toExponential(2);
+    // -1 to account for the decimal point
+  } else if (length.integer + length.decimal > maxDigits - 1) {
+    memory.result = memory.result.toFixed(maxDigits - 1 - length.integer);
+  }
+  display.textContent = memory.result;
+};
