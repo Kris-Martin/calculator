@@ -5,5 +5,7 @@ calculator.jpeg
 # Node
 node_modules
 package-lock.json
+# SCSS
+style.css.map
 # MacOS
 .DS_Store
